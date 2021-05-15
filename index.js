@@ -62,7 +62,8 @@ bot.registry
 	})
 	.registerCommandsIn(path.join(__dirname, 'commands'));
 
-
+bot.on('message', async (message) => {
+})
 
 process.on('exit', (code) => {
 	console.log("Now exiting...");

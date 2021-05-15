@@ -1,6 +1,6 @@
 const { Command } = require('discord.js-commando');
 
-module.exports = class SayCommand extends Command {
+module.exports = class whCreateCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'whcreate',
@@ -11,7 +11,7 @@ module.exports = class SayCommand extends Command {
             args: [
                 {
                     key: 'text',
-                    prompt: 'What text would you like the bot to say?',
+                    prompt: 'Please enter the  name',
                     type: 'string'
                 }
             ],
@@ -21,8 +21,13 @@ module.exports = class SayCommand extends Command {
     }
 
     run(message, { text }) {
-        message.delete();
-        message.say(text);
-        logToConsole.command(message.guild, message);
+        console.log("WOO")
+
+
+        message.channel.createWebhook(text, {
+            avatar: '/icon.png',
+        })
+            .then(webhook => console.log(`Created webhook ${webhook}`))
+            .catch(console.error);
     }
 };
