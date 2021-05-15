@@ -1,0 +1,28 @@
+{
+  "name": "gitbot",
+  "version": "0.0.1",
+  "description": "A configurable Github Activity bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Antares-Network/GitBot.git"
+  },
+  "author": "nathen418",
+  "license": "CC BY-NC-ND, See LICENSE file for more information",
+  "bugs": {
+    "url": "https://github.com/Antares-Network/GitBot/issues"
+  },
+  "homepage": "https://github.com/Antares-Network/GitBot#readme",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "commando-provider-mongo": "^2.1.0",
+    "discord.js": "^12.5.3",
+    "discord.js-commando": "^0.12.3",
+    "dotenv": "^9.0.2",
+    "mongodb": "^3.6.6",
+    "mongoose": "^5.12.9"
+  }
+}
