@@ -1,21 +1,21 @@
 {
-  "name": "gitbot",
+  "name": "webhookmamager",
   "version": "0.0.1",
-  "description": "A configurable Github Activity bot",
+  "description": "Manage webhooks in your server",
   "main": "index.js",
   "scripts": {
     "test": "test.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Antares-Network/GitBot.git"
+    "url": "git+https://github.com/Antares-Network/WebhookManager.git"
   },
   "author": "nathen418",
   "license": "CC BY-NC-ND, See LICENSE file for more information",
   "bugs": {
-    "url": "https://github.com/Antares-Network/GitBot/issues"
+    "url": "https://github.com/Antares-Network/WebhookManager/issues"
   },
-  "homepage": "https://github.com/Antares-Network/GitBot#readme",
+  "homepage": "https://github.com/Antares-Network/WebhookManager#readme",
   "dependencies": {
     "colors": "^1.4.0",
     "commando-provider-mongo": "^2.1.0",

@@ -45,6 +45,25 @@ global.bot = new CommandoClient({
 	console.log("Logged into the Discord API".green.bold);
 })() //idk why these () are needed but they are
 
+
+bot.registry
+	.registerDefaultTypes()
+	.registerGroups([
+		['user', 'Commands for regular users'],
+		['admin', 'Commands for admins'],
+		['owner', 'Commands for the bot owner'],
+	])
+	.registerDefaultGroups()
+	.registerDefaultCommands({
+		help: false,
+		ping: false,
+		eval: false,
+		unknownCommand: false
+	})
+	.registerCommandsIn(path.join(__dirname, 'commands'));
+
+
+
 process.on('exit', (code) => {
 	console.log("Now exiting...");
     console.log(`Exited with status code: ${code}`);
