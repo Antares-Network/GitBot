@@ -6,8 +6,8 @@ require('dotenv').config();
 require('colors');
 
 
-global.bot = new CommandoClient({
-	commandPrefix: '*',
+client = new CommandoClient({
+	commandPrefix: '^',
 	owner: '603629606154666024',
 	disableEveryone: true
 });
@@ -27,7 +27,7 @@ global.bot = new CommandoClient({
 	console.log('Connected to MongoDB'.green.bold);
 	
 	console.log(`Override default settings provider...`.bold.green)
-	bot.setProvider(
+	client.setProvider(
 		new MongoDBProvider(mongoose.connections[0].getClient(), process.env.BOT_SETTINGS_PATH)
 	).catch((error) => {
 		console.log(`There was an error connecting to the database:\n ${error}`)
@@ -38,7 +38,7 @@ global.bot = new CommandoClient({
 
 	//login to the discord api
 	console.log('Trying to login to the Discord API\nPlease wait for a connection'.yellow);
-	bot.login(process.env.BOT_TOKEN).catch((error) => {
+	client.login(process.env.BOT_TOKEN).catch((error) => {
 		console.log(`There was an error connecting to the database:\n ${error}`)
 		process.exit(1)
 	})
@@ -46,24 +46,27 @@ global.bot = new CommandoClient({
 })() //idk why these () are needed but they are
 
 
-bot.registry
+//register the commands
+client.registry
 	.registerDefaultTypes()
 	.registerGroups([
 		['user', 'Commands for regular users'],
 		['admin', 'Commands for admins'],
-		['owner', 'Commands for the bot owner'],
 	])
 	.registerDefaultGroups()
 	.registerDefaultCommands({
 		help: false,
-		ping: false,
 		eval: false,
-		unknownCommand: false
+		ping: false,
 	})
 	.registerCommandsIn(path.join(__dirname, 'commands'));
 
-bot.on('message', async (message) => {
+client.on('message', async (message) => {
+	if (message.author.bot) return;
+	console.log(`Message: ${message.content}`)
+
 })
+
 
 process.on('exit', (code) => {
 	console.log("Now exiting...");
